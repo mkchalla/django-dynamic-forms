@@ -1,0 +1,6 @@
+{% extends "formbuilder/base.html" %}
+{% block title %}Thank you{% endblock %}
+{% block content %}
+  <div class="alert alert-success">{{ form_obj.success_message }}</div>
+  <a href="{% url 'formbuilder:form_list' %}">Back to all forms</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "formbuilder/base.html" %}
+{% load static %}
+{% block title %}{{ form_obj.name }}{% endblock %}
+{% block content %}
+  <h1 class="h3 mb-1">{{ form_obj.name }}</h1>
+  {% if form_obj.description %}<p class="text-muted">{{ form_obj.description }}</p>{% endif %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ rendered_fields }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
+{% block extra_js %}
+  <script src="{% static 'formbuilder/repeat.js' %}"></script>
+{% endblock %}

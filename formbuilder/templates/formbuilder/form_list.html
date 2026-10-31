@@ -1,0 +1,17 @@
+{% extends "formbuilder/base.html" %}
+{% block title %}Forms{% endblock %}
+{% block content %}
+  <h1 class="h3 mb-4">Available forms</h1>
+  {% if forms %}
+    <div class="list-group">
+      {% for form_obj in forms %}
+        <a class="list-group-item list-group-item-action" href="{% url 'formbuilder:form_detail' form_obj.slug %}">
+          <div class="fw-semibold">{{ form_obj.name }}</div>
+          {% if form_obj.description %}<div class="text-muted small">{{ form_obj.description }}</div>{% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-muted">No forms have been published yet. Configure one in the admin.</p>
+  {% endif %}
+{% endblock %}
